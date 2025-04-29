@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class Player : CharacterBody2D {
-	public int Speed = 300;
+	public int Speed = 400;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -15,5 +15,8 @@ public partial class Player : CharacterBody2D {
 
 		Velocity = velocity * Speed;
 		MoveAndSlide();
+
+		var screenWidth = GetViewport().GetVisibleRect().Size.X;
+		Position = new Vector2(Mathf.Clamp(Position.X, 0, screenWidth), Position.Y);
 	}
 }
