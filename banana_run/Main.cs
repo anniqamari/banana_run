@@ -29,6 +29,7 @@ public partial class Main : Node2D
 	private void OnSpawnTimerTimeout()
 	{
 		var item = ItemScene.Instantiate<Item>();
+		AddChild(item);
 		var viewportWidth = GetViewport().GetVisibleRect().Size.X;
 		item.Position = new Vector2((float)GD.RandRange(0, viewportWidth), 50);
 		GD.Print(item.Position);
